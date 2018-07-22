@@ -1,0 +1,20 @@
+target
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.gitignore~
+.factorypath
+.project
+.settings
+.springBeans
+*.class
+*iml
+.iml
+.idea
+
+# Package Files #
+*.jar
+*.war
+*.ear
