@@ -18,3 +18,4 @@ target
 *.jar
 *.war
 *.ear
+src/main/resources/bootstrap\.properties
