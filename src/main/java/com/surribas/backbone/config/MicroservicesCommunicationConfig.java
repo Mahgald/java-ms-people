@@ -19,7 +19,7 @@ public class MicroservicesCommunicationConfig {
 	private boolean worldMapSecure;
 
 	public URI getWorldMapURL() {
-		return UriComponentsBuilder.fromHttpUrl((worldMapSecure ? "https://" : "http://") + worldMapHost+ ":" + worldMapPort).build().toUri();
+		return UriComponentsBuilder.fromHttpUrl((worldMapSecure ? "https://" : "http://") + worldMapHost+(!worldMapSecure? ":"+worldMapPort:"")).build().toUri();
 	}
 
 	
