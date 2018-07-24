@@ -5,7 +5,7 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>java-ms-people</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<packaging>jar</packaging>
 
 	<name>java-ms-people</name>
@@ -26,6 +26,14 @@
 	</properties>
 
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-eureka -->
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-starter-eureka</artifactId>
+		    <version>1.2.0.M1</version>
+		</dependency>
+
+	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
