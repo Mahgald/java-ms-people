@@ -9,19 +9,14 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Configuration
 public class MicroservicesCommunicationConfig {
 
-	@Value("${microservices.worldmap.host}")
-	private String worldMapHost;
+	@Value("${microservices.worldmap.name}")
+	private String worldMapName;
 
-	@Value("${microservices.worldmap.port}")
-	private String worldMapPort;
 	
-	@Value("${microservices.worldmap.secure}")
-	private boolean worldMapSecure;
-
 	public URI getWorldMapURL() {
-		return UriComponentsBuilder.fromHttpUrl((worldMapSecure ? "https://" : "http://") + worldMapHost+(!worldMapSecure? ":"+worldMapPort:"")).build().toUri();
+		return UriComponentsBuilder.fromHttpUrl("http://"+worldMapName).build().toUri();
 	}
-
+	
 	
 	
 	

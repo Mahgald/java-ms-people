@@ -1,9 +1,12 @@
 package com.surribas.backbone.controller;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +27,11 @@ public class PeopleController {
 	
 	@Autowired
 	MicroservicesCommunicationConfig microservicesCommunicationConfig;
-
+	
+	@Autowired
+	@LoadBalanced
+	RestTemplate mRestTemplate;
+	
 	private static List<Person> people = new ArrayList<>();
 	
 	@GetMapping("/person")
@@ -46,9 +53,11 @@ public class PeopleController {
 	
 	
 	private String connectToWorldMapMs(Long id) {
-		RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<String> data = restTemplate.getForEntity(microservicesCommunicationConfig.getWorldMapURL()+"/microservicesPoc/country/"+id,  String.class);
-		return data.getBody();
+		String uri = "http://java-ms-worldmap/microservicesPoc/country/{id}";
+		
+		String name=mRestTemplate.getForObject(uri, String.class,id);
+	
+		return name;
 	}
 	
 }

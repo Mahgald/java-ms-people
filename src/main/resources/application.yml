@@ -1,7 +1,16 @@
 spring:
   application:
-    name: java-ms-people
+    name: "@project.artifactId@"
+  main:
+    allow-bean-definition-overriding: true
 eureka:
   client:
     serviceUrl:
-      defaultZone: https://java-springcloudconfig-server.herokuapp.com/eureka/
+      defaultZone: http://localhost:9000/eureka/
+      
+info:
+  name: "@project.artifactId@"
+  version: "@project.version@"
+  description: "@project.description@"
+  running-profile: ${spring.profiles.active}
+  
